@@ -114,6 +114,7 @@
     getElements(){
       const thisProduct = this;
     
+      thisProduct.imageWrapper = thisProduct.element.querySelector(select.menuProduct.imageWrapper);
       thisProduct.accordionTrigger = thisProduct.element.querySelector(select.menuProduct.clickable);
       thisProduct.form = thisProduct.element.querySelector(select.menuProduct.form);
       thisProduct.formInputs = thisProduct.form.querySelectorAll(select.all.formInputs);
@@ -167,7 +168,6 @@
     
       // covert form to object structure e.g. { sauce: ['tomato'], toppings: ['olives', 'redPeppers']}
       const formData = utils.serializeFormToObject(thisProduct.form);
-      console.log('formData', formData);
     
       // set price to default price
       let price = thisProduct.data.price;
@@ -176,19 +176,46 @@
       for(let paramId in thisProduct.data.params) {
         // determine param value, e.g. paramId = 'toppings', param = { label: 'Toppings', type: 'checkboxes'... }
         const param = thisProduct.data.params[paramId];
-        console.log('paramId, param', paramId, param);
-    
+        //find images array in data source
+
+
+        
+        
         // for every option in this category
         for(let optionId in param.options) {
           // determine option value, e.g. optionId = 'olives', option = { label: 'Olives', price: 2, default: true }
           const option = param.options[optionId];
-          console.log('optionid, options', optionId, option);
 
+          const optionSelected = formData[paramId] && formData[paramId].includes(optionId);
+
+          // find image by class paramId-optionId
+          const optionImg = document.querySelector(`.${paramId}-${optionId}`);
+    
+          console.log(optionImg);
+          // if there is an image for this ingredient in data source
+          if(optionImg){
+            // if ingredient is selected show image
+            if(optionSelected){
+              optionImg.classList.add(classNames.menuProduct.imageVisible);
+              // else hide image.
+            } else{
+              optionImg.classList.remove(classNames.menuProduct.imageVisible);
+            }
+            
+            // else no image in data source
+          } else {
+            console.log('no corresponding image');
+            
+          }
+
+          
           // check if optionId of paramId - any topping, crust, sauce  - is selected in formData
-          if(formData[paramId] && formData[paramId].includes(optionId)){
-          // if option selected is not default, add price
+          if(optionSelected){
+            
+            // if option selected is not default, add price
             if(!option.default){
               price += option.price;
+
             }
                  
           }    
