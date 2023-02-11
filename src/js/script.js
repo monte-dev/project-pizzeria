@@ -409,28 +409,41 @@
       const deliveryFee = settings.cart.defaultDeliveryFee;
       let totalNumber = 0;
       let subtotalPrice = 0;
-      for (const cartProduct of thisCart.products) {
-        totalNumber += cartProduct.amount;
-        subtotalPrice += cartProduct.price;
-      }
-      if(totalNumber == 0){ } else {
-        thisCart.totalPrice = subtotalPrice + deliveryFee;
-      }
-      thisCart.dom.deliveryFee.innerHTML = deliveryFee;
-      thisCart.dom.subtotalPrice.innerHTML = subtotalPrice;
-      thisCart.dom.totalNumber.innerHTML = totalNumber;
+      if (thisCart.products.length == 0){
+        subtotalPrice = 0;
+        thisCart.totalPrice = subtotalPrice;
+        thisCart.dom.deliveryFee.innerHTML = 0;
+        thisCart.dom.subtotalPrice.innerHTML = 0;
+        thisCart.dom.totalNumber.innerHTML = 0;
+      } else {
+        for (const cartProduct of thisCart.products) {
+          totalNumber += cartProduct.amount;
+          subtotalPrice += cartProduct.price;
 
+          thisCart.totalPrice = subtotalPrice + deliveryFee;
+          thisCart.dom.deliveryFee.innerHTML = deliveryFee;
+          thisCart.dom.subtotalPrice.innerHTML = subtotalPrice;
+          thisCart.dom.totalNumber.innerHTML = totalNumber;
+
+        }
+      }
       for (let totalpriceEl of thisCart.dom.totalPrice) {
         totalpriceEl.innerHTML = thisCart.totalPrice;
       }
     }
+
+
+    
     remove(cartProduct){
       const thisCart = this;
       const products = thisCart.products;
+      
       // remove from html
       cartProduct.dom.wrapper.remove();
       const removedProduct = products.indexOf(cartProduct);
+      
       products.splice(removedProduct, 1);
+      
       thisCart.update();
     }
   }
