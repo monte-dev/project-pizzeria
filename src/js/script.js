@@ -410,11 +410,11 @@
       let totalNumber = 0;
       let subtotalPrice = 0;
       if (thisCart.products.length == 0){
-        subtotalPrice = 0;
+
         thisCart.totalPrice = subtotalPrice;
         thisCart.dom.deliveryFee.innerHTML = 0;
-        thisCart.dom.subtotalPrice.innerHTML = 0;
-        thisCart.dom.totalNumber.innerHTML = 0;
+        thisCart.dom.subtotalPrice.innerHTML = subtotalPrice;
+        thisCart.dom.totalNumber.innerHTML = totalNumber;
       } else {
         for (const cartProduct of thisCart.products) {
           totalNumber += cartProduct.amount;
@@ -481,7 +481,9 @@
       thisCartProduct.amountWidget = new AmountWidget(thisCartProduct.dom.amountWidget);
       thisCartProduct.dom.amountWidget.addEventListener('updated', () => {
         thisCartProduct.amount = thisCartProduct.amountWidget;
+
         thisCartProduct.price = thisCartProduct.priceSingle * thisCartProduct.amount.value;
+
         thisCartProduct.dom.price.innerHTML = thisCartProduct.price;
       });
   
