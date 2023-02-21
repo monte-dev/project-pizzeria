@@ -96,32 +96,21 @@ class Product{
 
   processOrder(){
     const thisProduct = this;
-    
     // covert form to object structure e.g. { sauce: ['tomato'], toppings: ['olives', 'redPeppers']}
     const formData = utils.serializeFormToObject(thisProduct.form);
-    
     // set price to default price
     let price = thisProduct.data.price;
-    
     // for every category (param)...
     for(let paramId in thisProduct.data.params) {
       // determine param value, e.g. paramId = 'toppings', param = { label: 'Toppings', type: 'checkboxes'... }
       const param = thisProduct.data.params[paramId];
-      //find images array in data source
-
-
-        
-        
       // for every option in this category
       for(let optionId in param.options) {
         // determine option value, e.g. optionId = 'olives', option = { label: 'Olives', price: 2, default: true }
         const option = param.options[optionId];
-
         const optionSelected = formData[paramId] && formData[paramId].includes(optionId);
-
         // find image by class paramId-optionId
         const optionImg = document.querySelector(`.${paramId}-${optionId}`);
-    
         // console.log(optionImg);
         // if there is an image for this ingredient in data source
         if(optionImg){
@@ -136,8 +125,6 @@ class Product{
         } else {
           // console.log('no corresponding image');
         }
-
-          
         // check if optionId of paramId - any topping, crust, sauce  - is selected in formData
         if(optionSelected){
           // if option selected is not default, add price
@@ -153,13 +140,12 @@ class Product{
       }
     }
     thisProduct.priceSingle = price;
-
     //  multiply price by amount 
     price *= thisProduct.amountWidget.value;
-
     // update calculated price in the HTML
     thisProduct.priceElem.innerHTML = price;
   }
+
   prepareCartProduct(){
     const thisProduct = this;
     const productSummary = {
@@ -172,6 +158,7 @@ class Product{
     };
     return productSummary;
   }
+
   prepareCartProductParams(){
     const thisProduct = this;
     // covert form to object structure e.g. { sauce: ['tomato'], toppings: ['olives', 'redPeppers']}
@@ -183,9 +170,7 @@ class Product{
       const param = thisProduct.data.params[paramId];
       params[paramId] = {
         label: param.label,
-        options: {
-       
-        }
+        options: {}
       };
       // for every option in this category
       for(let optionId in param.options) {
@@ -216,4 +201,5 @@ class Product{
     thisProduct.element.dispatchEvent(event);
   }
 }
+
 export default Product;
