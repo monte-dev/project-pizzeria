@@ -7,7 +7,6 @@ import HourPicker from '../components/HourPicker.js';
 class Booking {
   constructor(element){
     const thisBooking = this;
-    console.log(select.widgets.amount.datePicker.wrapper);
 
     thisBooking.selectedTable = null;  
 
@@ -115,9 +114,13 @@ class Booking {
     for(let table of thisBooking.dom.tables){
       
       let tableId = table.getAttribute(settings.booking.tableIdAttribute);
+      table.classList.remove(classNames.booking.tableSelected);
+      console.log('selected table', thisBooking.selectedTable);
+      
       if(!isNaN(tableId)){
         tableId = parseInt(tableId);
       }
+
       if(!allAvailable
          && thisBooking.booked[thisBooking.date][thisBooking.hour].includes(tableId)
       ){
@@ -132,28 +135,37 @@ class Booking {
     const thisBooking = this;
 
     const clickedElement = event.target;
-    
-    if (!clickedElement.classList.contains('table')) {
-      return; // 
-    } else {
+    const selectedId = clickedElement.getAttribute(settings.booking.tableIdAttribute);
+
+    // if clicked element is a table
+    if (clickedElement.classList.contains('table')) {
+      // check if table is booked alert user
       if (clickedElement.classList.contains('booked')) {
         alert('This table is already booked');
-      } else {
-        const selectedTable = clickedElement.getAttribute(settings.booking.tableIdAttribute);
-        console.log(selectedTable);
-    
-        if (selectedTable === this.selectedTable) {
-          console.log(selectedTable);
-          clickedElement.classList.remove(classNames.booking.tableSelected);
-          thisBooking.selectedTable = null;
-        } else {
-
-          clickedElement.classList.add('selected');
-          thisBooking.selectedTable = selectedTable;
+      } 
+      // if table is not booked 
+      // if it is selected remove selected class
+      else if (clickedElement.classList.contains(classNames.booking.tableSelected)){
+        clickedElement.classList.remove(classNames.booking.tableSelected);
+        thisBooking.selectedTable = null;
+        console.log('remove from thisBooking.selectedTable', thisBooking.selectedTable);
+      }
+      else {
+        // remove selected class from other tables
+        for(let table of thisBooking.dom.tables){
+          table.classList.remove(classNames.booking.tableSelected);
+          console.log('removed class selected from all tables');
+          
         }
+        // if table is not selected add selected class
+
+        clickedElement.classList.add(classNames.booking.tableSelected);
+        thisBooking.selectedTable = selectedId;
+        console.log('added to thisBooking.selectedTable', thisBooking.selectedTable);
       }
     }
   }
+  
   
   render(element){
     const thisBooking = this;
