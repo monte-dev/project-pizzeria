@@ -1,15 +1,16 @@
-
 export const select = {
   templateOf: {
     menuProduct: '#template-menu-product',
     cartProduct: '#template-cart-product',
     bookingWidget: '#template-booking-widget',
+    homepage: '#template-homepage',
   },
   containerOf: {
     menu: '#product-list',
     cart: '#cart',
     pages: '#pages',
     booking: '.booking-wrapper',
+    homepage: '.home-wrapper',
     tables: '.floor-plan',
   },
   all: {
@@ -40,6 +41,11 @@ export const select = {
         output: '.output',
       },
     },
+  },
+  homepage: {
+    cta: '.home__cta',
+    quotes: '.home__quotes',
+    gallery: '.home__gallery',
   },
   booking: {
     peopleAmount: '.people-amount',
@@ -108,6 +114,7 @@ export const settings = {
   db: {
     url: '//localhost:3131',
     products: 'products',
+    homepage: 'homepage',
     orders: 'orders',
     bookings: 'bookings',
     events: 'events',
@@ -132,4 +139,5 @@ export const templates = {
   menuProduct: Handlebars.compile(document.querySelector(select.templateOf.menuProduct).innerHTML),
   cartProduct: Handlebars.compile(document.querySelector(select.templateOf.cartProduct).innerHTML),
   bookingWidget: Handlebars.compile(document.querySelector(select.templateOf.bookingWidget).innerHTML),
+  homepage: Handlebars.compile(document.querySelector(select.templateOf.homepage).innerHTML),
 };

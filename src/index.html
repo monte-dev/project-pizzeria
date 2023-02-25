@@ -30,6 +30,7 @@
 						</h2>
 					</div>
 					<div class="main-nav">
+						<a href="#home">Home</a>
 						<a href="#order">Order</a>
 						<a href="#booking">Booking</a>
 					</div>
@@ -96,6 +97,9 @@
 		</header>
 
 		<div id="pages">
+			<section id="home">
+				<div class="home-wrapper container"></div>
+			</section>	
 			<section id="order">
 				<div id="product-list" class="product-list container"></div>
 			</section>
@@ -103,7 +107,45 @@
 				<div class="booking-wrapper container"></div>
 			</section>
 		</div>
-    <script id="template-cart-product" type="text/x-handlebars-template">
+		
+		<!-- Handlebars templates -->
+		<script id="template-homepage" type="text/x-handlebars-template">
+			<div class="home">
+				<div class="home__cta">
+					<div>
+						<img src="./images/home/pizza-1.jpg" alt="order online">
+						<h3>ORDER ONLINE</h3>
+					</div>
+					<div>
+						<img src="./images/home/pizza-2.jpg" alt="book a table">
+						<h3>BOOK A TABLE</h3>
+					</div>
+					<div class="info">
+						<h3>OPENING HOURS</h3>
+						<p>TUE-SUN, 12PM - 12AM</p>
+					</div>
+				</div>
+				<div class="home__quotes">
+					{{#each quotes}}
+						<img src="{{ this.image}}" alt="reviewer">
+						<blockquote>
+							<h3>{{ this.title}}</h3>
+							<p>{{ this.text }}</p>
+							<cite>{{ this.author }}</cite>
+						</blockquote>
+					{{/each}}
+				</div>
+				<div class="home__gallery">
+					{{#each images}}
+						<img src="{{ this }}" alt="gallery">
+					{{/each}}
+
+				</div>
+			</div>			
+		</script>
+
+
+    	<script id="template-cart-product" type="text/x-handlebars-template">
 			<li>
 				<div class="widget-amount">
 					<!-- widget-amount -->
@@ -163,6 +205,7 @@
 			<article class="product"> <!-- product -->
 
 			    <header class="product__header">
+
 			      <h3 class="product__name no-spacing">{{ name }} <i class="fas fa-chevron-down product__icon"></i></h3>
 			      <p class="product__base-price no-spacing">${{ price }}</p>
 			    </header>

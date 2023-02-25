@@ -7,7 +7,6 @@ import HourPicker from '../components/HourPicker.js';
 class Booking {
   constructor(element){
     const thisBooking = this;
-
     thisBooking.selectedTable = null;  
 
     thisBooking.render(element);
@@ -174,6 +173,7 @@ class Booking {
     thisBooking.dom.wrapper = element;
     thisBooking.dom.wrapper.appendChild(generatedHTML);
 
+    
     thisBooking.dom.peopleAmount = document.querySelector(select.booking.peopleAmount);
     thisBooking.dom.hoursAmount = document.querySelector(select.booking.hoursAmount);
     thisBooking.dom.datePicker = document.querySelector(select.widgets.amount.datePicker.wrapper);
