@@ -22,6 +22,24 @@ class Homepage {
     homepageWrapper.appendChild(utils.createDOMFromHTML(generateHTML));        
   }
   initActions() {
+    // const thisHomepage = this;
+    
+    // const button = document.querySelector(select.homepage.orderButton);
+    // button.addEventListener('click', function(event) {
+    //   event.preventDefault();
+    //   thisHomepage.order();
+    // });
+    let elem = document.querySelector('.main-carousel');
+    
+    // eslint-disable-next-line no-unused-vars, no-undef
+    let flkty = new Flickity( elem, {
+      // options
+      autoPlay: 3500,
+      contain: true,
+      wrapAround: true,
+      prevNextButtons: false,
+      pauseAutoPlayOnHover: false,
+    });
   } 
 }
 

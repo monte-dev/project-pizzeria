@@ -11,8 +11,8 @@
 			],
 			"quotes": [
 				{
-					"title": "Delicious!",
-					"text": "I love this place! The food is delicious and the service is great. I would definitely recommend it to anyone.",
+					"title": "Always fresh!",
+					"text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos officia dignissimos doloremque sed et, nobis inventore aperiam debitis illum doloribus!",
 					"author": "John Doe",
 					"image": "./images/home/pizza-3.jpg"
 				},
@@ -24,7 +24,7 @@
 				},
 				{
 					"title": "Delicious!",
-					"text": "Reprehenderit magni itaque? Nisi neque earum dicta voluptates harum commodi corporis! Eius ullam repellendus quis deserunt totam qui nulla minima voluptates ut.",
+					"text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos officia dignissimos doloremque sed et, nobis inventore aperiam debitis illum doloribus!",
 					"author": "John Doe",
 					"image": "images/home/pizza-3.jpg"
 				}

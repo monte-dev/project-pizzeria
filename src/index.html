@@ -13,6 +13,7 @@
 			rel="stylesheet">
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 		<link rel="stylesheet" href="./vendor/range-slider.min.css">
+		<link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
 		<link rel="shortcut icon" href="./images/favicon-32x32.png" type="image/x-icon">
 		<link rel="stylesheet" href="./css/style.css">
 	</head>
@@ -99,7 +100,7 @@
 		<div id="pages">
 			<section id="home">
 				<div class="home-wrapper container"></div>
-			</section>	
+			</section>
 			<section id="order">
 				<div id="product-list" class="product-list container"></div>
 			</section>
@@ -107,18 +108,19 @@
 				<div class="booking-wrapper container"></div>
 			</section>
 		</div>
-		
 		<!-- Handlebars templates -->
 		<script id="template-homepage" type="text/x-handlebars-template">
 			<div class="home">
 				<div class="home__cta">
 					<div>
-						<img src="./images/home/pizza-1.jpg" alt="order online">
-						<h3>ORDER ONLINE</h3>
-					</div>
-					<div>
-						<img src="./images/home/pizza-2.jpg" alt="book a table">
-						<h3>BOOK A TABLE</h3>
+						<div class="action">
+							<img src="./images/home/pizza-1.jpg" alt="order online">
+							<h3>ORDER ONLINE</h3>
+						</div>
+						<div class="action">
+							<img src="./images/home/pizza-2.jpg" alt="book a table">
+							<h3>BOOK A TABLE</h3>
+						</div>
 					</div>
 					<div class="info">
 						<h3>OPENING HOURS</h3>
@@ -126,21 +128,33 @@
 					</div>
 				</div>
 				<div class="home__quotes">
+					<div class="main-carousel">
 					{{#each quotes}}
-						<img src="{{ this.image}}" alt="reviewer">
-						<blockquote>
-							<h3>{{ this.title}}</h3>
-							<p>{{ this.text }}</p>
-							<cite>{{ this.author }}</cite>
-						</blockquote>
+						<div class="carousel-cell">
+							<img src="{{ this.image }}" alt="reviewer">
+							<blockquote>
+								<h3>{{ this.title}}</h3>
+								<p>{{ this.text }}</p>
+								<cite>- {{ this.author }}</cite>
+							</blockquote>
+						</div>
 					{{/each}}
+					</div>
 				</div>
 				<div class="home__gallery">
 					{{#each images}}
+					<div class="card">
+						<div class="card-overlay"></div>
 						<img src="{{ this }}" alt="gallery">
+						<div class="icons-wrapper">
+							<i class="fas fa-heart"></i>
+							<i class="fas fa-share-alt"></i>						
+						</div>
+					</div>
 					{{/each}}
 
 				</div>
+				<a href="https://instagram.com">View more on Instagram</a>
 			</div>			
 		</script>
 
@@ -419,6 +433,7 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.0/handlebars.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 		<script src="./vendor/range-slider.min.js"></script>
+		<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
 		<script src="./js/app.js" type="module"></script>
 	</body>
 </html>
