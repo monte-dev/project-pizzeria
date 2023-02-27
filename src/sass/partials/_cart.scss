@@ -157,3 +157,14 @@
   }
 
 }
+
+@media screen and (max-width: 600px){
+  .header__wrapper {
+    text-align: center;
+  }
+
+  .cart {
+    position: relative;
+    margin: 0 auto;
+  }
+}
