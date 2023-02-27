@@ -6,7 +6,7 @@ class Homepage {
     const thisHomepage = this;
     
     thisHomepage.data = data;
-    console.log('homepage data', thisHomepage.data);
+    // console.log('homepage data', thisHomepage.data);
      
     thisHomepage.renderDOM();
     thisHomepage.initActions();
@@ -15,7 +15,6 @@ class Homepage {
     const thisHomepage = this;
     
     const generateHTML = templates.homepage(thisHomepage.data);
-    console.log('generateHTML', generateHTML);
     
     const homepageWrapper = document.querySelector(select.containerOf.homepage);
 
