@@ -1,4 +1,4 @@
-[Live site on Replit.com](https://www.example.com](https://project-pizzeria.monte-dev.repl.co/#/booking))
+[Live site on Replit.com](https://project-pizzeria.monte-dev.repl.co/#/booking)
 
 *Please allow 20 seconds for page to initially load due to free hosting limitations*
 
